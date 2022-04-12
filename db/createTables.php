@@ -1,15 +1,5 @@
+<?php include 'dbConnection.php' ?>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "intelcost_bienes";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-	die("Connection failed: " . mysqli_connect_error());
-}
 
 // sql to create table
 $tdatosGenerales = "CREATE TABLE datos_generales (
