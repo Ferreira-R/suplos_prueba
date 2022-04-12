@@ -1,12 +1,23 @@
-<?php
-$todos = false;
+<?php include_once 'db/searchOptions.php'; ?>
 
+<?php
+//mostrar todos
+$todos = false;
 if (isset($_POST['mostrarTodos'])) {
   $todos = true;
 }
-
 if (isset($_POST['buscar'])) {
   $todos = false;
+}
+
+//obtener datos
+$dataJSON = file_get_contents('data-1.json', FILE_USE_INCLUDE_PATH);
+$data = json_decode($dataJSON);
+
+if (isset($_POST['ciudad']) || isset($_POST['tipo'])) {
+  echo $_POST['ciudad'];
+  echo $_POST['tipo'];
+  print_r($_POST['precio'][4]);
 }
 
 ?>
@@ -35,7 +46,7 @@ if (isset($_POST['buscar'])) {
       <h1>Bienes Intelcost</h1>
     </div>
     <div class="colFiltros">
-      <form action="#" method="post" id="formulario">
+      <form action="index.php" method="post" id="formulario">
         <div class="filtrosContenido">
           <div class="tituloFiltros">
             <h5>Filtros</h5>
@@ -43,14 +54,34 @@ if (isset($_POST['buscar'])) {
           <div class="filtroCiudad input-field">
             <p><label for="selectCiudad">Ciudad:</label><br></p>
             <select name="ciudad" id="selectCiudad">
-              <option value="" selected>Elige una ciudad</option>
+              <option value="" disabled selected>Elige una ciudad</option>
+              <?php
+              if (mysqli_num_rows($ciudadList) > 0) {
+                // output data of each row
+                while ($row = mysqli_fetch_assoc($ciudadList)) {
+                  echo '<option name="ciudad" value="' . $row["ciudad"] . '">' . $row["ciudad"] . '</option><br/>';
+                }
+              } else {
+                echo "0 results";
+              }
+              ?>
             </select>
           </div>
           <div class="filtroTipo input-field">
             <p><label for="selecTipo">Tipo:</label></p>
             <br>
             <select name="tipo" id="selectTipo">
-              <option value="">Elige un tipo</option>
+              <option disabled selected value="">Elige un tipo</option>
+              <?php
+              if (mysqli_num_rows($tipoList) > 0) {
+                // output data of each row
+                while ($row = mysqli_fetch_assoc($tipoList)) {
+                  echo '<option name="tipo" value="' . $row["tipo"] . '">' . $row["tipo"] . '</option><br/>';
+                }
+              } else {
+                echo "0 results";
+              }
+              ?>
             </select>
           </div>
           <div class="filtroPrecio">
@@ -79,9 +110,27 @@ if (isset($_POST['buscar'])) {
             </form>
             <div class="divider"></div>
             <?php if ($todos) {
+              foreach ($data as $item) {
+                echo '
+                  <hr class="divider" id="blackhr">
+                  <div class="row">
+                    <div class="col s6">
+                      <img src="img/home.jpg" id="cardImage1">
+                    </div>
+                    <div class="col s6">
+                      <p style="display:none">id: ' . $item->Id . '</p>
+                      <p>Dirección: ' . $item->Direccion . '</p>
+                      <p>Ciudad: ' . $item->Ciudad . '</p>
+                      <p>Teléfono: ' . $item->Telefono . '</p>
+                      <p>Código Postal: ' . $item->Codigo_Postal . '</p>
+                      <p>Tipo: ' . $item->Tipo . '</p>
+                      <p>Precio: ' . $item->Precio . '</p>
+                    </div>
+                  </div>
+                ';
+              }
+            }  ?>
 
-              echo 'Hola mundo';
-            } ?>
           </div>
         </div>
       </div>
