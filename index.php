@@ -14,10 +14,15 @@ if (isset($_POST['buscar'])) {
 $dataJSON = file_get_contents('data-1.json', FILE_USE_INCLUDE_PATH);
 $data = json_decode($dataJSON);
 
-if (isset($_POST['ciudad']) || isset($_POST['tipo'])) {
-  echo $_POST['ciudad'];
-  echo $_POST['tipo'];
-  print_r($_POST['precio'][4]);
+if (isset($_POST['ciudad'])) {
+  echo $_POST['ciudad'] . '<br/>';
+}
+if (isset($_POST['tipo'])) {
+  echo $_POST['tipo'] . '<br/>';
+}
+if ($_POST) {
+  // echo "Hola mundo" . '<br/>';
+  print_r($_POST['precio']);
 }
 
 ?>
@@ -100,7 +105,7 @@ if (isset($_POST['ciudad']) || isset($_POST['tipo'])) {
         <li><a href="#tabs-2">Mis bienes</a></li>
       </ul>
       <div id="tabs-1">
-        <div class="colContenido" id="divResultadosBusqueda">
+        <div class="colContenido" style="min-width: 100%;" id="divResultadosBusqueda">
           <div class="tituloContenido card" style="justify-content: center;">
             <h5>Resultados de la búsqueda:</h5>
             <form action="index.php" method="post">
