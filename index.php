@@ -1,8 +1,12 @@
 <?php
 $todos = false;
 
-if (isset($_POST['mostrarTodosBtn'])) {
+if (isset($_POST['mostrarTodos'])) {
   $todos = true;
+}
+
+if (isset($_POST['buscar'])) {
+  $todos = false;
 }
 
 ?>
@@ -54,7 +58,7 @@ if (isset($_POST['mostrarTodosBtn'])) {
             <input type="text" id="rangoPrecio" name="precio" value="" />
           </div>
           <div class="botonField">
-            <input type="submit" class="btn white" value="Buscar" id="submitButton">
+            <input type="submit" class="btn white" value="Buscar" name="buscar" id="submitButton">
           </div>
         </div>
       </form>
@@ -70,7 +74,7 @@ if (isset($_POST['mostrarTodosBtn'])) {
             <h5>Resultados de la búsqueda:</h5>
             <form action="index.php" method="post">
               <div class="botonField">
-                <input type="submit" class="btn white" value="Mostrar todos" name="mostrarTodosBtn" id="mostrarTodosBtn">
+                <input type="submit" class="btn white" value="Mostrar todos" name="mostrarTodos" id="">
               </div>
             </form>
             <div class="divider"></div>
