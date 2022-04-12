@@ -1,0 +1,92 @@
+[
+	{
+		"Id": 1,
+		"Direccion": "Ap #549-7395 Ut Rd.",
+		"Ciudad": "New York",
+		"Telefono": "334-052-0954",
+		"Codigo_Postal": "85328",
+		"Tipo": "Casa",
+		"Precio": "$30,746"
+	},
+	{
+		"Id": 2,
+		"Direccion": "P.O. Box 657, 9831 Cursus St.",
+		"Ciudad": "Orlando",
+		"Telefono": "488-441-5521",
+		"Codigo_Postal": "04436",
+		"Tipo": "Casa de Campo",
+		"Precio": "$71,045"
+	},
+	{
+		"Id": 3,
+		"Direccion": "Ap #325-2507 Quisque Av.",
+		"Ciudad": "Los Angeles",
+		"Telefono": "623-807-2869",
+		"Codigo_Postal": "89804",
+		"Tipo": "Casa de Campo",
+		"Precio": "$36,087"
+	},
+	{
+		"Id": 4,
+		"Direccion": "347-866 Laoreet Road",
+		"Ciudad": "Los Angeles",
+		"Telefono": "997-640-8188",
+		"Codigo_Postal": "94526-134",
+		"Tipo": "Casa de Campo",
+		"Precio": "$16,048"
+	},
+	{
+		"Id": 5,
+		"Direccion": "4732 Ipsum. Rd.",
+		"Ciudad": "Houston",
+		"Telefono": "802-414-8872",
+		"Codigo_Postal": "162925",
+		"Tipo": "Casa",
+		"Precio": "$45,912"
+	},
+	{
+		"Id": 6,
+		"Direccion": "672-9576 Consectetuer Road",
+		"Ciudad": "Orlando",
+		"Telefono": "355-601-5749",
+		"Codigo_Postal": "210020",
+		"Tipo": "Casa de Campo",
+		"Precio": "$64,370"
+	},
+	{
+		"Id": 7,
+		"Direccion": "549-5766 Sodales St.",
+		"Ciudad": "Orlando",
+		"Telefono": "557-228-6918",
+		"Codigo_Postal": "16794",
+		"Tipo": "Casa",
+		"Precio": "$2,846"
+	},
+	{
+		"Id": 8,
+		"Direccion": "P.O. Box 847, 2589 In Av.",
+		"Ciudad": "Washington",
+		"Telefono": "390-713-8687",
+		"Codigo_Postal": "70689",
+		"Tipo": "Apartamento",
+		"Precio": "$60,951"
+	},
+	{
+		"Id": 9,
+		"Direccion": "175-4344 Nec, Ave",
+		"Ciudad": "Orlando",
+		"Telefono": "578-170-6179",
+		"Codigo_Postal": "P0C 0G3",
+		"Tipo": "Casa de Campo",
+		"Precio": "$58,902"
+	},
+	{
+		"Id": 10,
+		"Direccion": "P.O. Box 497, 8679 Turpis. St.",
+		"Ciudad": "New York",
+		"Telefono": "870-559-3430",
+		"Codigo_Postal": "7029",
+		"Tipo": "Casa",
+		"Precio": "$17,759"
+	}
+]
