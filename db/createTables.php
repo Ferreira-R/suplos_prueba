@@ -9,7 +9,7 @@ $tdatosGenerales = "CREATE TABLE datos_generales (
 	telefono VARCHAR(20),
 	cpostal INT(10),
 	tipo VARCHAR(50),
-	precio VARCHAR(20)
+	precio INT(20)
 	)";
 
 if (mysqli_query($conn, $tdatosGenerales)) {
@@ -25,7 +25,7 @@ $tfavoritos = "CREATE TABLE favoritos (
 	telefono VARCHAR(20),
 	cpostal INT(10),
 	tipo VARCHAR(50),
-	precio VARCHAR(20)
+	precio INT(20)
 	)";
 
 if (mysqli_query($conn, $tfavoritos)) {
