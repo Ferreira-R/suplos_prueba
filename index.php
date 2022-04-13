@@ -18,9 +18,9 @@ $dataJSON = file_get_contents('data-1.json', FILE_USE_INCLUDE_PATH);
 $data = json_decode($dataJSON);
 
 include_once 'db/searchFilter.php';
-
 include_once 'db/toFav.php';
-
+include_once 'db/showFav.php';
+include_once 'db/removeFav.php';
 ?>
 
 <!DOCTYPE html>
@@ -127,7 +127,7 @@ include_once 'db/toFav.php';
                       <p>Tipo: ' . $item->Tipo . '</p>
                       <p>Precio: ' . $item->Precio . '</p>
                       <form action="index.php" method="post">
-                      <button name="favoriteBtn" value="' . $item->Id . '" class="btn-floating btn-large waves-effect waves-light red">
+                      <button name="favoriteBtn" value="' . $item->Id . '" class="btn-floating btn-large waves-effect waves-light green">
                         <i class="material-icons">favorite</i>
                       </button>
                       </form>
@@ -153,7 +153,7 @@ include_once 'db/toFav.php';
                       <p>Tipo: ' . $filterItem['tipo'] . '</p>
                       <p>Precio: ' . $filterItem['precio'] . '</p>
                       <form action="index.php" method="post">
-                      <button name="favoriteBtn" value="' . $filterItem['id'] . '" class="btn-floating btn-large waves-effect waves-light red">
+                      <button name="favoriteBtn" value="' . $filterItem['id'] . '" class="btn-floating btn-large waves-effect waves-light green">
                         <i class="material-icons">favorite</i>
                       </button>
                       </form>
@@ -168,28 +168,58 @@ include_once 'db/toFav.php';
       </div>
 
       <div id="tabs-2">
-        <div class="colContenido" id="divResultadosBusqueda">
+        <div class="colContenido" style="min-width: 100%;" id="divResultadosBusqueda">
           <div class="tituloContenido card" style="justify-content: center;">
             <h5>Bienes guardados:</h5>
             <div class="divider"></div>
+            <?php
+            if (!$favList) {
+              echo "<p>No hay favoritos guardados</p>";
+            }
+            foreach ($favList as $bienFavorito) {
+              echo '
+                  <hr class="divider" id="blackhr">
+                  <div class="row">
+                    <div class="col s6">
+                      <img src="img/home.jpg" id="cardImage1">
+                    </div>
+                    <div class="col s6">
+                      <p style="display:none">id: ' . $bienFavorito['id'] . '</p>
+                      <p>Dirección: ' . $bienFavorito['direccion'] . '</p>
+                      <p>Ciudad: ' . $bienFavorito['ciudad'] . '</p>
+                      <p>Teléfono: ' . $bienFavorito['telefono'] . '</p>
+                      <p>Código Postal: ' . $bienFavorito['cpostal'] . '</p>
+                      <p>Tipo: ' . $bienFavorito['tipo'] . '</p>
+                      <p>Precio: ' . $bienFavorito['precio'] . '</p>
+                      <form action="index.php" method="post">
+                      <button name="removeFav" value="' . $bienFavorito['id'] . '" class="btn-floating btn-large waves-effect waves-light red">
+                        <i class="material-icons">remove_circle</i>
+                      </button>
+                      </form>
+                    </div>
+                  </div>
+                ';
+            }
+            ?>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-    <script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/buscador.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $("#tabs").tabs();
-      });
-    </script>
+  <script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/buscador.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#tabs").tabs();
+    });
+  </script>
 </body>
 
 </html>
