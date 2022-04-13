@@ -3,26 +3,21 @@
 <?php
 //mostrar todos
 $todos = false;
+$filtrados = false;
 if (isset($_POST['mostrarTodos'])) {
   $todos = true;
+  $filtrados = false;
 }
 if (isset($_POST['buscar'])) {
   $todos = false;
+  $filtrados = true;
 }
 
 //obtener datos
 $dataJSON = file_get_contents('data-1.json', FILE_USE_INCLUDE_PATH);
 $data = json_decode($dataJSON);
 
-if (isset($_POST['ciudad'])) {
-}
-if (isset($_POST['tipo'])) {
-}
-if (isset($_POST['precio'])) {
-  $rangeArr = preg_split("/\;/", $_POST['precio']);
-  $minPrice = $rangeArr[0];
-  $maxPrice = $rangeArr[1];
-}
+include_once 'db/searchFilter.php';
 
 ?>
 
@@ -129,6 +124,29 @@ if (isset($_POST['precio'])) {
                       <p>Código Postal: ' . $item->Codigo_Postal . '</p>
                       <p>Tipo: ' . $item->Tipo . '</p>
                       <p>Precio: ' . $item->Precio . '</p>
+                      <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">favorite</i></a>
+                    </div>
+                  </div>
+                ';
+              }
+            }  ?>
+            <?php if ($filtrados) {
+              foreach ($filterData as $filterItem) {
+                echo '
+                  <hr class="divider" id="blackhr">
+                  <div class="row">
+                    <div class="col s6">
+                      <img src="img/home.jpg" id="cardImage1">
+                    </div>
+                    <div class="col s6">
+                      <p style="display:none">id: ' . $filterItem['id'] . '</p>
+                      <p>Dirección: ' . $filterItem['direccion'] . '</p>
+                      <p>Ciudad: ' . $filterItem['ciudad'] . '</p>
+                      <p>Teléfono: ' . $filterItem['telefono'] . '</p>
+                      <p>Código Postal: ' . $filterItem['cpostal'] . '</p>
+                      <p>Tipo: ' . $filterItem['tipo'] . '</p>
+                      <p>Precio: ' . $filterItem['precio'] . '</p>
+                      <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">favorite</i></a>
                     </div>
                   </div>
                 ';
