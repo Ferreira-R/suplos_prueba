@@ -15,14 +15,13 @@ $dataJSON = file_get_contents('data-1.json', FILE_USE_INCLUDE_PATH);
 $data = json_decode($dataJSON);
 
 if (isset($_POST['ciudad'])) {
-  echo $_POST['ciudad'] . '<br/>';
 }
 if (isset($_POST['tipo'])) {
-  echo $_POST['tipo'] . '<br/>';
 }
-if ($_POST) {
-  // echo "Hola mundo" . '<br/>';
-  print_r($_POST['precio']);
+if (isset($_POST['precio'])) {
+  $rangeArr = preg_split("/\;/", $_POST['precio']);
+  $minPrice = $rangeArr[0];
+  $maxPrice = $rangeArr[1];
 }
 
 ?>
