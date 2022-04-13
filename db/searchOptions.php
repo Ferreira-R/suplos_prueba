@@ -16,4 +16,4 @@ if (!mysqli_query($conn, $qCiudad)) {
 
 // print_r($tipoList);
 
-mysqli_close($conn);
+// mysqli_close($conn);
