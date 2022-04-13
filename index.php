@@ -19,6 +19,8 @@ $data = json_decode($dataJSON);
 
 include_once 'db/searchFilter.php';
 
+include_once 'db/toFav.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +126,11 @@ include_once 'db/searchFilter.php';
                       <p>Código Postal: ' . $item->Codigo_Postal . '</p>
                       <p>Tipo: ' . $item->Tipo . '</p>
                       <p>Precio: ' . $item->Precio . '</p>
-                      <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">favorite</i></a>
+                      <form action="index.php" method="post">
+                      <button name="favoriteBtn" value="' . $item->Id . '" class="btn-floating btn-large waves-effect waves-light red">
+                        <i class="material-icons">favorite</i>
+                      </button>
+                      </form>
                     </div>
                   </div>
                 ';
@@ -146,7 +152,11 @@ include_once 'db/searchFilter.php';
                       <p>Código Postal: ' . $filterItem['cpostal'] . '</p>
                       <p>Tipo: ' . $filterItem['tipo'] . '</p>
                       <p>Precio: ' . $filterItem['precio'] . '</p>
-                      <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">favorite</i></a>
+                      <form action="index.php" method="post">
+                      <button name="favoriteBtn" value="' . $filterItem['id'] . '" class="btn-floating btn-large waves-effect waves-light red">
+                        <i class="material-icons">favorite</i>
+                      </button>
+                      </form>
                     </div>
                   </div>
                 ';
