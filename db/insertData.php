@@ -11,7 +11,7 @@ foreach ($data as $item) {
 	$telefono = $item->Telefono;
 	$cpostal = $item->Codigo_Postal;
 	$tipo = $item->Tipo;
-	$precio = $item->Precio;
+	$precio = (int)str_replace(['$', ','], '', $item->Precio);
 
 	$insertData = "INSERT INTO `datos_generales` (`id`, `direccion`, `ciudad`, `telefono`, `cpostal`, `tipo`, `precio`) VALUES ('$id', '$direccion', '$ciudad', '$telefono', '$cpostal', '$tipo', '$precio');";
 
