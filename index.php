@@ -1,4 +1,4 @@
-<?php include_once 'db/searchOptions.php'; ?>
+<?php include_once 'scripts/searchOptions.php'; ?>
 
 <?php
 //mostrar todos
@@ -17,10 +17,10 @@ if (isset($_POST['buscar'])) {
 $dataJSON = file_get_contents('data-1.json', FILE_USE_INCLUDE_PATH);
 $data = json_decode($dataJSON);
 
-include_once 'db/searchFilter.php';
-include_once 'db/toFav.php';
-include_once 'db/showFav.php';
-include_once 'db/removeFav.php';
+include_once 'scripts/searchFilter.php';
+include_once 'scripts/toFav.php';
+include_once 'scripts/showFav.php';
+include_once 'scripts/removeFav.php';
 ?>
 
 <!DOCTYPE html>
