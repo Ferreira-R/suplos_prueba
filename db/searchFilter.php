@@ -44,4 +44,4 @@ if (isset($_POST['precio'])) {
 	// print_r($filterData);
 }
 
-mysqli_close($conn);
+// mysqli_close($conn);
