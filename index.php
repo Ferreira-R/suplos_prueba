@@ -1,4 +1,4 @@
-<?php include_once 'db/searchOptions.php'; ?>
+<?php include 'db/searchOptions.php'; ?>
 
 <?php
 //mostrar todos
@@ -21,6 +21,7 @@ include_once 'db/searchFilter.php';
 include_once 'db/toFav.php';
 include_once 'db/showFav.php';
 include_once 'db/removeFav.php';
+include_once 'db/generateReport.php';
 ?>
 
 <!DOCTYPE html>
@@ -99,6 +100,7 @@ include_once 'db/removeFav.php';
       <ul>
         <li><a href="#tabs-1">Bienes disponibles</a></li>
         <li><a href="#tabs-2">Mis bienes</a></li>
+        <li><a href="#tabs-3">Reportes</a></li>
       </ul>
       <div id="tabs-1">
         <div class="colContenido" style="min-width: 100%;" id="divResultadosBusqueda">
@@ -204,9 +206,63 @@ include_once 'db/removeFav.php';
           </div>
         </div>
       </div>
+
+      <div id="tabs-3">
+        <div class="colContenido" style="min-width: 100%;" id="divResultadosBusqueda">
+          <div class="tituloContenido card" style="justify-content: center;">
+            <h5>Exportar reportes:</h5>
+            <div class="divider"></div>
+            <div class="">
+              <form action="index.php" method="post" id="formulario">
+                <div class="filtrosContenido">
+                  <div class="tituloFiltros">
+                    <h5>Filtros</h5>
+                  </div>
+                  <div class="filtroCiudad input-field">
+                    <p><label for="selectCiudad">Ciudad:</label><br></p>
+                    <?php include 'db/searchOptions.php'; ?>
+                    <select name="ciudad" id="selectCiudad">
+                      <option value="" disabled selected>Elige una ciudad</option>
+                      <?php
+                      if (mysqli_num_rows($ciudadList) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($ciudadList)) {
+                          echo '<option name="ciudad" value="' . $row["ciudad"] . '">' . $row["ciudad"] . '</option><br/>';
+                        }
+                      } else {
+                        echo "0 results";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="filtroTipo input-field">
+                    <p><label for="selecTipo">Tipo:</label></p>
+                    <br>
+                    <select name="tipo" id="selectTipo">
+                      <option disabled selected value="">Elige un tipo</option>
+                      <?php
+                      if (mysqli_num_rows($tipoList) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($tipoList)) {
+                          echo '<option name="tipo" value="' . $row["tipo"] . '">' . $row["tipo"] . '</option><br/>';
+                        }
+                      } else {
+                        echo "0 results";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="botonField">
+                    <input type="submit" class="btn white" value="Generar Excel" name="reporte" id="submitButton">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
